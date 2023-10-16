@@ -3,6 +3,7 @@ package com.vicadev.logogenerator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vicadev.logogenerator.ui.content.DataColumn
+import com.vicadev.logogenerator.ui.content.GeneratorColumn
+import com.vicadev.logogenerator.ui.content.InfoColumn
 import com.vicadev.logogenerator.ui.theme.LogoGeneratorTheme
 
 class MainActivity : ComponentActivity() {
@@ -51,7 +54,12 @@ private fun Content() {
             TopAppBar(title = { Text(text = "Logo Generator") })
         }
     ) { padding ->
-        Column(modifier = Modifier.padding(padding).padding(16.dp)) {
+        Column(
+            modifier = Modifier
+                .padding(padding)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(32.dp)
+        ) {
             //Bloque 1
             DataColumn(
                 games,
@@ -59,6 +67,12 @@ private fun Content() {
                 onGamesChange = { games = it },
                 onElementsChange = { elements = it }
             )
+
+            //Bloque 2
+            InfoColumn()
+
+            //Bloque 3
+            GeneratorColumn()
         }
     }
 }

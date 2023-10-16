@@ -14,6 +14,8 @@ fun DataTextField(label: String, text: String, onValueChange: (String) -> Unit) 
         value = text,
         onValueChange = onValueChange,
         label = { Text(text = label) },
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        singleLine = true,
+        isError = text.isEmpty()
     )
 }
