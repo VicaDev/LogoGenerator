@@ -6,9 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aallam.openai.api.BetaOpenAI
 import com.aallam.openai.api.audio.TranscriptionRequest
 import com.aallam.openai.api.file.FileSource
+import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.api.logging.LogLevel
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.LoggingConfig
@@ -19,10 +19,15 @@ import com.vicadev.logogenerator.conf.Env
 import kotlinx.coroutines.launch
 import okio.source
 import java.io.File
+import kotlin.time.Duration.Companion.seconds
 
-class LogoGeneratorViewModel: ViewModel() {
+class LogoGeneratorViewModel : ViewModel() {
 
-    private var openAI = OpenAI(token = Env.OPENAI_API_KEY, logging = LoggingConfig(LogLevel.All))
+    private var openAI = OpenAI(
+        token = Env.OPENAI_API_KEY,
+        logging = LoggingConfig(LogLevel.All),
+        timeout = Timeout(socket = 60.seconds),
+    )
 
     var info: String by mutableStateOf("")
 

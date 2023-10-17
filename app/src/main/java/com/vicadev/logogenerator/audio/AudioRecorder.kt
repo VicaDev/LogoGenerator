@@ -7,7 +7,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 class AudioRecorder(private val context: Context) {
-    var recorder: MediaRecorder? = null
+    private var recorder: MediaRecorder? = null
 
     private fun create(): MediaRecorder {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
