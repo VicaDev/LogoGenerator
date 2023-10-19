@@ -26,16 +26,16 @@ fun InfoColumn(context: Context, viewModel: LogoGeneratorViewModel) {
         ) {
             viewModel.recordAudio(context)
         }
-        /*
-        ActionButton(
-            text = "Resumir",
-            icon = Icons.Filled.Compress,
-            description = "Resumir grabación"
-        ) {
-            //Acción del botón
-        }
-*/
+
         if (viewModel.info.isNotEmpty()) {
+            ActionButton(
+                text = "Resumir",
+                icon = Icons.Filled.Compress,
+                description = "Resumir grabación"
+            ) {
+                viewModel.createInfoSummary()
+            }
+
             Text(text = viewModel.info)
         }
     }

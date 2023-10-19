@@ -102,7 +102,7 @@ private fun Content() {
             InfoColumn(LocalContext.current, viewModel)
 
             //Bloque 3
-            GeneratorColumn()
+            GeneratorColumn(viewModel, games, elements)
         }
     }
 }
